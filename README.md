@@ -2,7 +2,7 @@
 <h3>AIM:</h3>
 <h3>ENTER YOUR NAME : MOONESH P</h3>
 <h3>ENTER YOUR REGISTER NO : 212223230126</h3>
-<h3>EX. NO : 03</h3>
+<h3>EX. NO : 05</h3>
 <h3>DATE : 17/05/2025</h3>
 <h1> <align=center> MATRIX MULTIPLICATION USING CUDA </h3>
   Implement Matrix Multiplication using GPU.</h3>
