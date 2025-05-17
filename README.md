@@ -1,9 +1,9 @@
 # PCA-EXP-5-MATRIX-MULTIPLICATION-USING-CUDA-AY-23-24
 <h3>AIM:</h3>
-<h3>ENTER YOUR NAME : MOONESH P</h3>
-<h3>ENTER YOUR REGISTER NO : 212223230126</h3>
-<h3>EX. NO : 05</h3>
-<h3>DATE : 17/05/2025</h3>
+<h3>NAME:MOONESH P</h3>
+<h3>REGISTER NO:212223230126</h3>
+<h3>EX. NO:05</h3>
+<h3>DATE:17-05-2025</h3>
 <h1> <align=center> MATRIX MULTIPLICATION USING CUDA </h3>
   Implement Matrix Multiplication using GPU.</h3>
 
@@ -27,11 +27,13 @@ Google Colab with NVCC Compiler
 12.	Print Result: Print the result matrix and the elapsed time.
 13.	Free Device Memory: Finally, free the device memory that was allocated for the matrices.
 ## PROGRAM:
-```c
+```
+%%cuda
 #include <stdio.h>
 #include <cuda_runtime.h>
 #include <cuda.h>
 #include <sys/time.h>
+#include <stdlib.h> // Added for exit()
 
 #ifndef _COMMON_H
 #define _COMMON_H
@@ -67,11 +69,14 @@ __global__ void matrixMultiply(int *a, int *b, int *c, int size)
     int col = blockIdx.x * blockDim.x + threadIdx.x;
 
     int sum = 0;
-    for (int k = 0; k < size; ++k)
+    if (row < size && col < size) // Added bounds check
     {
-        sum += a[row * size + k] * b[k * size + col];
+        for (int k = 0; k < size; ++k)
+        {
+            sum += a[row * size + k] * b[k * size + col];
+        }
+        c[row * size + col] = sum;
     }
-    c[row * size + col] = sum;
 }
 
 int main()
@@ -140,8 +145,10 @@ int main()
     return 0;
 }
 ```
+
 ## OUTPUT:
-![image](https://github.com/user-attachments/assets/f79d8a0e-980b-4dde-bb17-9ab5621ba18a)
+![Screenshot 2025-05-17 120200](https://github.com/user-attachments/assets/e468f1b9-41d3-4657-9d7d-558f483452b5)
+
 
 ## RESULT:
 Thus the program has been executed by using CUDA to mulptiply two matrices. It is observed that there are variations in host and device elapsed time. Device took 2.10944 time.
